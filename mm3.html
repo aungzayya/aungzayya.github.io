@@ -53,27 +53,6 @@
 	border-top-left-radius:5px;
 }
 
-.tblDonation td:nth-child(1){
-    width:80px;
-    text-align:center;
-}
-
-.tblDonation td:nth-child(2){
-    text-align:left;
-    font-family:Myanmar3; 
-    font-size: 20px;
-}
-
-.tblDonation td:nth-child(3){
-    width:100px;
-    text-align:right;
-}
-
-.tblDonation td:nth-child(4){
-    width:150px;
-    text-align:center;
-}
-
 .lastrow th{
     padding:7px;
     border-bottom:5px solid #22A7F0 !important;
@@ -182,9 +161,57 @@
   background-color: #555
 }
 
+#quiz {
+  top: 310px;
+  background-color: #333
+}
+
+
+.dragElement, .dropZone {
+  width: 12rem;
+  height: 15rem;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  background: rgba( 255, 255, 255, 0.9 );
+backdrop-filter: blur( 4px );
+-webkit-backdrop-filter: blur( 4px );
+border-radius: 10px;
+  transition: 0.3s;
+}
+
+.dropZone {
+  width: 13rem;
+  height: 16rem;
+  background: rgba( 0, 0, 0, 0.7 );
+backdrop-filter: blur( 4.5px );
+-webkit-backdrop-filter: blur( 4.5px );
+border-radius: 10px;
+}
+
+.beingDragged {
+ color: white;
+  background-color: black;
+}
+
+@media (max-width: 800px) {
+  .dragElement {
+    width: 6rem;
+    height: 9rem;
+    font-size: 60%;
+  }
+  .dropZone {
+    width: 8rem;
+    height: 10rem;
+  }
+}
 </style>
 <script>
-	 
+//	 function dragStartHandler(ev) {
+//  ev.dataTransfer.setData("text", ev.target.id); // Store the element's ID
+//}
 </script>
 </head>
 <body  style="width:100%;text-align:center;">
@@ -205,35 +232,103 @@
 	 
 	 
 	<div id="mySidenav" class="sidenav">
-	  <a href="#" class="active" id="about">ကဗျာ</a>
+	  <a href="index.html" id="about">ကဗျာ</a>
 	  <a href="mm1.html" id="blog">စာလုံးပေါင်း</a>
 	  <a href="mm2.html" id="projects">ဗျည်းသံ ရုပ်ပုံ</a>
-	  	  <a href="mm3.html" id="contact">မေးဖြေ</a>
+	  <a href="#" class="active" id="contact">မေးဖြေ</a>
 	</div> 
 	
-	<table class="tblDonation" align="center">
-		 
-		<tr class="firstrow"><td><img src="./img/elephantbamboo.gif" width="200px" /></td></tr>
-		
-		<tr><td>တောကြီးထဲက ဆင် <br/>
-    ငသတ် သတ်လို့ ဆွဲကာငင် <br/>
-    တောကြီးထဲက ဆင်။ <br/>
-    ဆင် ဆင့် ဆင်း လျှိုမြောင်တွင်း <br/>
-    ဝါးရုံတောကို နင်း။ <br/>
-    နင် နင့် နင်း <br/>
-    ဆင် ဆင့် ဆင်း။
-    <br/><br/>စာရေးဆရာကြီး တင်မိုး <br/>
-    <audio controls autoplay>
-      <source src="audio/poem_elephant.mp3" type="audio/mpeg">
-    Your browser does not support the audio element.
-    </audio>
-  </td>
-</tr>
+	
+	    
+	<table class="tblDonation" align="center">		 
+	
+	<tr class="firstrow">
+	<td><div class="dragElement" id="drgOne" draggable="true">
+      <h3>Drag and Drop 1</h3>
+    </div>
+	</td>
+	<td>
+	<div class="dragElement" id="drgTwo" draggable="true">
+      <h3>Drag and Drop 2</h3>
+    </div>
+	</td>
+	<td>
+	<div class="dragElement" id="drgThree" draggable="true" >
+      <h3>Drag and Drop 3</h3>
+    </div>
+	</td>
+	</tr>
+	<tr>
+<td>
+     <div class="dropZone"></div>
+	</td>
+<td><div class="dropZone"></div></td>
+<td><div class="dropZone"></div></td>	
+	</tr>
+	
 	</table>
+
 	<div class="donationReceivePPL">
 		<div style="padding:10px;padding-left:30px !important;">
  
 		</div>
 	</div>
+	
+	  <script type="text/javascript">
+var dragItems = Array.from(document.querySelectorAll('.dragElement'));
+var dropZoneSet = Array.from(document.querySelectorAll('.dropZone'));
+
+
+
+dropZoneSet.forEach(dropzone => {
+  dropzone.addEventListener('dragover', (e) => {
+    e.preventDefault();
+	e.dataTransfer.dropEffect = "move"; // Optional: specify the drag effect
+});
+});
+
+dropZoneSet.forEach(dropzone => {
+  dropzone.addEventListener('drop', (e) => {
+    e.preventDefault();
+	//e.dataTransfer.dropEffect = "move"; // Optional: specify the drag effect
+	const data = e.dataTransfer.getData("text"); // Retrieve the stored ID
+	console.log("get id back::"+data);
+	const draggedElement = document.getElementById(data);
+ // e.target.appendChild(draggedElement); // Move the element
+  
+    //dropzone.appendChild(dragItem);
+	dropzone.appendChild(draggedElement);
+	//dropzone.appendChild(e.);
+});
+});
+
+dropZoneSet.forEach((dropZone) => {
+  dropZone.addEventListener('dragover', () => {
+    dropZone.classList.add('hoverOver');
+  });
+  
+   dropZone.addEventListener('dragleave', () => {
+    dropZone.classList.remove('hoverOver');
+  });
+ 
+});
+
+dragItems.forEach((dragItem) => {
+dragItem.addEventListener('drag', (ev) => {
+  dragItem.classList.add('beingDragged');
+} );
+
+dragItem.addEventListener('dragstart', (ev) => {
+  console.log("testing::"+ev.target.id);
+  ev.dataTransfer.setData("text", ev.target.id); // Store the element's ID
+  	const data = ev.dataTransfer.getData("text"); // Retrieve the stored ID
+    console.log("testing2::"+data);
+} );
+});
+//dragItem.addEventListener('dragend', () => {
+//  dragItem.classList.remove('beingDragged');
+//} )
+</script>
+
 </body>
 </html>
