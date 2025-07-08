@@ -147,7 +147,7 @@
   left: -10px;
   transition: 0.3s;
   padding: 15px;
-  width: 100px;
+  width: 150px;
   text-decoration: none;
   font-size: 12px;
   color: white;
@@ -162,23 +162,27 @@
   left: 0;
 }
 
-#about {
+#intro {
   top: 70px;
+}
+
+#mm0 {
+  top: 130px;
+}
+
+#mm1 {
+  top: 190px;
+}
+
+#mm2 {
+  top: 250px;
+}
+
+.completed {
   background-color: #04AA6D;
 }
 
-#blog {
-  top: 130px;
-  background-color: #2196F3;
-}
-
-#projects {
-  top: 190px;
-  background-color: #f44336;
-}
-
-#contact {
-  top: 250px;
+.ongoing {
   background-color: #555
 }
 
@@ -205,28 +209,19 @@
 	 
 	 
 	<div id="mySidenav" class="sidenav">
-	  <a href="#" class="active" id="about">ကဗျာ</a>
-	  <a href="mm1.html" id="blog">စာလုံးပေါင်း</a>
-	  <a href="mm2.html" id="projects">ဗျည်းသံ ရုပ်ပုံ</a>
-	  	  <a href="mm3.html" id="contact">မေးဖြေ</a>
+		<a href="#" class="active completed" id="intro">မိတ်ဆက်</a>
+		<a href="mm0.html" id="mm0" class="completed">တောကြီးထဲက ဆင် (ကဗျာ)</a>
+		<a href="mm1.html" id="mm1" class="ongoing">အင် ၊ အင့် ၊ အင်း</a>
+		<a href="mm2.html" id="mm2" class="ongoing">အောင် ၊ အောင့် ၊ အောင်း</a>
 	</div> 
 	
 	<table class="tblDonation" align="center">
 		 
-		<tr class="firstrow"><td><img src="./img/elephantbamboo.gif" width="200px" /></td></tr>
-		
-		<tr><td>တောကြီးထဲက ဆင် <br/>
-    ငသတ် သတ်လို့ ဆွဲကာငင် <br/>
-    တောကြီးထဲက ဆင်။ <br/>
-    ဆင် ဆင့် ဆင်း လျှိုမြောင်တွင်း <br/>
-    ဝါးရုံတောကို နင်း။ <br/>
-    နင် နင့် နင်း <br/>
-    ဆင် ဆင့် ဆင်း။
-    <br/><br/>စာရေးဆရာကြီး တင်မိုး <br/>
-    <audio controls autoplay>
-      <source src="audio/poem_elephant.mp3" type="audio/mpeg">
-    Your browser does not support the audio element.
-    </audio>
+		<tr class="firstrow"><td>
+		<video width="320" controls autoplay>
+  <source src="video/mm_g2/0_intro.mp4" type="video/mp4">
+Your browser does not support the video tag.
+</video>
   </td>
 </tr>
 	</table>

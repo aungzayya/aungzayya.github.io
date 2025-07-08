@@ -53,6 +53,27 @@
 	border-top-left-radius:5px;
 }
 
+.tblDonation td:nth-child(1){
+    width:80px;
+    text-align:center;
+}
+
+.tblDonation td:nth-child(2){
+    text-align:left;
+    font-family:Myanmar3; 
+    font-size: 20px;
+}
+
+.tblDonation td:nth-child(3){
+    width:100px;
+    text-align:right;
+}
+
+.tblDonation td:nth-child(4){
+    width:150px;
+    text-align:center;
+}
+
 .lastrow th{
     padding:7px;
     border-bottom:5px solid #22A7F0 !important;
@@ -141,23 +162,27 @@
   left: 0;
 }
 
-#about {
+#intro {
   top: 70px;
+}
+
+#mm0 {
+  top: 130px;
+}
+
+#mm1 {
+  top: 190px;
+}
+
+#mm2 {
+  top: 250px;
+}
+
+.completed {
   background-color: #04AA6D;
 }
 
-#blog {
-  top: 130px;
-  background-color: #2196F3;
-}
-
-#projects {
-  top: 190px;
-  background-color: #f44336;
-}
-
-#contact {
-  top: 250px;
+.ongoing {
   background-color: #555
 }
 
@@ -174,7 +199,7 @@
 	<ul align='center'>
   	<li><span>Interactive Learning</span></li>
   	<li><a class="active" href="#news">Myanmarsar</a></li>
-  	<li><a href="#">Maths</a></li>
+  	<li><a href="test.html?time=201512061636">Maths</a></li>
   	<!--
   	<li><a href="#contact">Contact</a></li>
   	<li><a href="#about">About</a></li>
@@ -184,47 +209,39 @@
 	 
 	 
 	<div id="mySidenav" class="sidenav">
-	  <a href="index.html" id="about">တောကြီးထဲက ဆင် (ကဗျာ)</a>
-	  <a href="#" class="active" id="blog">အင် ၊ အင့် ၊ အင်း</a>
-	  <a href="mm2.html" id="projects">အောင် ၊ အောင့် ၊ အောင်း</a>
+		<a href="index.html" class="completed" id="intro">မိတ်ဆက်</a>
+		<a href="#" id="mm0" class="active completed">တောကြီးထဲက ဆင် (ကဗျာ)</a>
+		<a href="mm1.html" id="mm1" class="ongoing">အင် ၊ အင့် ၊ အင်း</a>
+		<a href="mm2.html" id="mm2" class="ongoing">အောင် ၊ အောင့် ၊ အောင်း</a>
 	</div> 
 	
 	<table class="tblDonation" align="center">
 		 
-		<tr class="firstrow">
-<td colspan=3>
-	<table class="tblDonation" align="center">
-			<tr class="firstrow">
-<th>အင်</th><td>အင့်</td><td>အင်း</td></tr>
-<tr><td>-င်</td><td>-င့်</td><td>-င်း</td></tr>
-<tr><td>-ဉ်</td><td>-ဉ့်</td><td>-ဉ်း</td></tr>
-</table>
-</td>
-</tr>
-<tr>		
-<td><img src="./img/horse.jpeg" width="150px" /></td>
-<td><img src="./img/tazin.jpeg" width="150px" /></td>
-<td><img src="./img/elephant.jpg" width="150px" /></td></tr>
-  <tr><td>မြင်း <br/>
-    <audio controls>
-      <source src="audio/horse.mp3" type="audio/mpeg">
+		<tr class="firstrow"><td>
+		<video width="320" controls autoplay>
+  <source src="video/mm_g2/1_elephant_poem.mp4" type="video/mp4">
+Your browser does not support the video tag.
+</video>
+		</td></tr>
+		
+		<tr><td>
+		<img src="./img/elephantbamboo.gif" width="200px" /><br/>
+		<h2>တောကြီးထဲက ဆင် </h2><br/>
+    ငသတ် သတ်လို့ ဆွဲကာငင် <br/>
+    တောကြီးထဲက ဆင်။ <br/>
+    ဆင် ဆင့် ဆင်း လျှိုမြောင်တွင်း <br/>
+    ဝါးရုံတောကို နင်း။ <br/>
+    နင် နင့် နင်း <br/>
+    ဆင် ဆင့် ဆင်း။
+    <br/><br/>စာရေးဆရာကြီး တင်မိုး <br/>
+    <audio controls autoplay>
+      <source src="audio/poem_elephant.mp3" type="audio/mpeg">
     Your browser does not support the audio element.
     </audio>
-  </td><td>တံစဉ်
-    <br/>
-      <audio controls>
-        <source src="audio/tazin.mp3" type="audio/mpeg">
-      Your browser does not support the audio element.
-      </audio>
-    </td><td>ဆင်
-      <br/>
-        <audio controls>
-          <source src="audio/elephant.mp3" type="audio/mpeg">
-        Your browser does not support the audio element.
-        </audio>
-    </td></tr>
+	<br/>
+  </td>
+</tr>
 	</table>
-
 	<div class="donationReceivePPL">
 		<div style="padding:10px;padding-left:30px !important;">
  
