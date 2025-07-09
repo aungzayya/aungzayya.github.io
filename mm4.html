@@ -4,78 +4,85 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>DragDropTouch</title>
-    <script src="js/drag-drop-touch.esm.min.js?autoload" type="module"></script>
-    <script src="js/index.js" type="module" async></script>
-    <link rel="stylesheet" href="css/index.css" />
+	<script type="text/javascript">
+	document.addEventListener('DOMContentLoaded', () => {
+    const draggable = document.getElementById('draggable');
+    const dropzone = document.getElementById('dropzone');
+
+    let isDragging = false;
+    let offsetX, offsetY;
+
+    // Mouse Events
+    draggable.addEventListener('mousedown', (e) => {
+        isDragging = true;
+        offsetX = e.clientX - draggable.getBoundingClientRect().left;
+        offsetY = e.clientY - draggable.getBoundingClientRect().top;
+        draggable.style.cursor = 'grabbing';
+    });
+
+    document.addEventListener('mousemove', (e) => {
+        if (!isDragging) return;
+        draggable.style.left = (e.clientX - offsetX) + 'px';
+        draggable.style.top = (e.clientY - offsetY) + 'px';
+    });
+
+    document.addEventListener('mouseup', () => {
+        if (isDragging) {
+            isDragging = false;
+            draggable.style.cursor = 'grab';
+            checkDropZone();
+        }
+    });
+
+    // Touch Events
+    draggable.addEventListener('touchstart', (e) => {
+        isDragging = true;
+        const touch = e.touches[0];
+        offsetX = touch.clientX - draggable.getBoundingClientRect().left;
+        offsetY = touch.clientY - draggable.getBoundingClientRect().top;
+        draggable.style.cursor = 'grabbing';
+        e.preventDefault(); // Prevent scrolling on touch devices
+    });
+
+    document.addEventListener('touchmove', (e) => {
+        if (!isDragging) return;
+        const touch = e.touches[0];
+        draggable.style.left = (touch.clientX - offsetX) + 'px';
+        draggable.style.top = (touch.clientY - offsetY) + 'px';
+        e.preventDefault(); // Prevent scrolling on touch devices
+    });
+
+    document.addEventListener('touchend', () => {
+        if (isDragging) {
+            isDragging = false;
+            draggable.style.cursor = 'grab';
+            checkDropZone();
+        }
+    });
+
+    function checkDropZone() {
+        const draggableRect = draggable.getBoundingClientRect();
+        const dropzoneRect = dropzone.getBoundingClientRect();
+
+        if (draggableRect.left < dropzoneRect.right &&
+            draggableRect.right > dropzoneRect.left &&
+            draggableRect.top < dropzoneRect.bottom &&
+            draggableRect.bottom > dropzoneRect.top) {
+            
+            // Element is over the dropzone
+            dropzone.style.backgroundColor = 'darkgreen';
+            // Example: Append draggable to dropzone
+            // dropzone.appendChild(draggable); 
+        } else {
+            dropzone.style.backgroundColor = 'lightgreen';
+        }
+    }
+});
+	</script>
   </head>
 
   <body>
-    <header>
-      <h1>Drag and Drop Touch</h1>
-      <p>
-        This is a demo page that loads the drag-drop-touch.esm.js file for
-        shimming drag-and-drop functions for touch events.
-      </p>
-      <p>
-        Its project page is over on
-        <a href="https://github.com/drag-drop-touch-js/dragdroptouch"
-          >https://github.com/drag-drop-touch-js/dragdroptouch</a
-        >.
-      </p>
-    </header>
-
-    <main>
-      <section>
-        <header>
-          <h2>A box dragging example</h2>
-          <p>
-            Drag some boxes around with the mouse, then open your Developer
-            Tools, turn on mobile emulation, and try to do the same with touch
-            input enabled. Things should still work.
-          </p>
-        </header>
-
-        <div id="columns">
-          <div class="column" draggable="true">
-            <header>Input</header>
-            <input
-              title="input"
-              type="text"
-              placeholder="input"
-              autocomplete="none"
-            />
-            <input title="check" type="checkbox" />
-          </div>
-
-          <div class="column" draggable="true">
-            <header>TextArea</header>
-            <textarea title="textarea" placeholder="textarea"></textarea>
-          </div>
-
-          <div class="column" draggable="true">
-            <header>Select</header>
-            <select title="select">
-              <option>one</option>
-              <option>two</option>
-              <option>three</option>
-            </select>
-            <select title="multi" multiple>
-              <option>one</option>
-              <option>two</option>
-              <option>three</option>
-            </select>
-          </div>
-
-          <div class="column" draggable="true">
-            <header>Image</header>
-            <img
-              src="https://interactive-examples.mdn.mozilla.net/media/cc0-images/grapefruit-slice-332-332.jpg"
-              alt="grapefruit"
-              draggable="false"
-            />
-          </div>
-        </div>
-      </section>
-    </main>
+     <div id="draggable" style="position: absolute; width: 100px; height: 100px; background-color: lightblue; cursor: grab;">Drag Me</div>
+<div id="dropzone" style="width: 200px; height: 200px; background-color: lightgreen; margin-top: 150px;">Drop Here</div>
   </body>
 </html>
