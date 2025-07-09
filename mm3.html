@@ -1,9 +1,8 @@
 ﻿<!DOCTYPE html>
 <html>
 <head>
-<script src="js/drag-drop-touch.esm.min.js?autoload" type="module"></script>
+<script src="node_modules/drag-drop-touch/DragDropTouch.js"></script>
 <style>
-
 @font-face
 {
     font-family: 'Myanmar3';
@@ -278,7 +277,8 @@ border-radius: 10px;
 var dragItems = Array.from(document.querySelectorAll('.dragElement'));
 var dropZoneSet = Array.from(document.querySelectorAll('.dropZone'));
 
-
+var offsetX=0;
+var offsetY=0;
 
 dropZoneSet.forEach(dropzone => {
   dropzone.addEventListener('dragover', (e) => {
@@ -319,12 +319,31 @@ dragItem.addEventListener('drag', (ev) => {
 } );
 
 dragItem.addEventListener('dragstart', (ev) => {
-  console.log("testing::"+ev.target.id);
   ev.dataTransfer.setData("text", ev.target.id); // Store the element's ID
-  	const data = ev.dataTransfer.getData("text"); // Retrieve the stored ID
-    console.log("testing2::"+data);
 } );
+/*
+    // Touch Events
+    dragItem.addEventListener('touchstart', (e) => {
+        isDragging = true;
+        const touch = e.touches[0];
+        offsetX = touch.clientX - dragItem.getBoundingClientRect().left;
+        offsetY = touch.clientY - dragItem.getBoundingClientRect().top;
+        dragItem.style.cursor = 'grabbing';
+        e.preventDefault(); // Prevent scrolling on touch devices
+    });
+	*/
 });
+/*
+objDrgOne = document.getElementById("drgOne");
+
+    document.addEventListener('touchmove', (e) => {
+        //if (!isDragging) return;
+        const touch = e.touches[0];
+        objDrgOne.style.left = (touch.clientX - offsetX) + 'px';
+        objDrgOne.style.top = (touch.clientY - offsetY) + 'px';
+//        e.preventDefault(); // Prevent scrolling on touch devices
+    });
+	*/
 //dragItem.addEventListener('dragend', () => {
 //  dragItem.classList.remove('beingDragged');
 //} )
