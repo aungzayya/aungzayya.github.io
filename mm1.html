@@ -1,6 +1,7 @@
 ﻿<!DOCTYPE html>
 <html>
 <head>
+<script src="js/DragDropTouch.js"></script>
 <link rel="stylesheet" href='http://mmwebfonts.comquas.com/fonts/?font=myanmar3' />
 <style>
 
@@ -165,6 +166,65 @@
   background-color: #555
 }
 
+
+.dragElement, .dropZone {
+  width: 150px;
+  height: 150px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  background: rgba( 255, 255, 255, 0.9 );
+backdrop-filter: blur( 4px );
+-webkit-backdrop-filter: blur( 4px );
+border-radius: 5px;
+  transition: 0.3s;
+}
+
+.dropZone {
+  width: 100%;
+  height: 150px;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  background: rgba( 0, 0, 0, 0 );
+backdrop-filter: blur( 4.5px );
+-webkit-backdrop-filter: blur( 4.5px );
+border-radius: 5px;
+}
+
+.beingDragged {
+ color: white;
+  background-color: black;
+}
+
+@media (max-width: 800px) {
+  .dragElement {
+    width: 6rem;
+    height: 9rem;
+    font-size: 60%;
+  }
+  .dropZone {
+    width: 8rem;
+    height: 10rem;
+  }
+}
+
+
+.button {
+  background-color: #008CBA;
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+
 </style>
 <script>
 	 
@@ -324,10 +384,36 @@
 <td colspan=3>
 <h2>Practice</h2>
 </td></tr>
+<tr>
+<td colspan=3>
+<table id="tblQuiz" style="visibility:collapse;">
+<tr><td>
+		<img id="a1" src="./img/horse.jpeg" width="150px" class="dragElement" draggable="true" />
+<br/>
+		<img  id="a2" src="./img/tazin.jpeg" width="150px" class="dragElement" draggable="true" />
+<br/>
+		<img  id="a3" src="./img/elephant.jpg" width="150px" class="dragElement" draggable="true" />
+</td><td>	
+		<img id="b1" src="./img/rose.jpg" width="150px"  class="dragElement" draggable="true" />    
+<br/>
+		<img id="b2" src="./img/yaeOsin.jpg" width="150px"  class="dragElement" draggable="true" />
+<br/>
+		<img id="b3" src="./img/rice.jpg" width="150px" class="dragElement" draggable="true" />
+</td><td>
+		<img id="b1" src="./img/rice_fields.jpg" width="150px"  class="dragElement" draggable="true" />    
+<br/>
+		<img id="b2" src="./img/dragonfly.jpg" width="150px"  class="dragElement" draggable="true" />
+<br/>
+		<img id="b3" src="./img/thazin_flower.jpg" width="150px" class="dragElement" draggable="true" />
+</td></tr></table>
+<br/>
+<input type="button" class="button" id="letsQuiz" value="Let's Quiz" onClick="QuizOnClick()">
+
+</td></tr>
 <tr>		
-<td><img src="./img/horse.jpeg" width="150px" /></td>
-<td><img src="./img/tazin.jpeg" width="150px" /></td>
-<td><img src="./img/elephant.jpg" width="150px" /></td></tr>
+<td><div class="dropZone" id="dzHorse"><img src="./img/horse.jpeg" width="150px" /></div></td>
+<td><div class="dropZone"><img src="./img/tazin.jpeg" width="150px" /></div></td>
+<td><div class="dropZone"><img src="./img/elephant.jpg" width="150px" /></div></td></tr>
   <tr><td>မြင်း <br/>
     <audio controls>
       <source src="audio/horse.mp3" type="audio/mpeg">
@@ -346,6 +432,52 @@
         Your browser does not support the audio element.
         </audio>
     </td></tr>
+	
+	<tr>		
+<td><div class="dropZone"><img src="./img/rose.jpg" width="150px" /></div></td>
+<td><div class="dropZone"><img src="./img/yaeOsin.jpg" width="150px" /></div></td>
+<td><div class="dropZone"><img src="./img/rice.jpg" width="150px" /></div></td></tr>
+  <tr><td>နှင်းဆီပွင့် <br/>
+    <audio controls>
+      <source src="audio/horse.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+    </audio>
+  </td><td>ရေအိုးစင်
+    <br/>
+      <audio controls>
+        <source src="audio/tazin.mp3" type="audio/mpeg">
+      Your browser does not support the audio element.
+      </audio>
+    </td><td>ထမင်း
+      <br/>
+        <audio controls>
+          <source src="audio/elephant.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+        </audio>
+    </td></tr>
+	
+	<tr>		
+<td><div class="dropZone" id="dzRiceFields" ><img src="./img/rice_fields.jpg" width="150px" /></div></td>
+<td><div class="dropZone"><img src="./img/dragonfly.jpg" width="150px" /></div></td>
+<td><div class="dropZone"><img src="./img/thazin_flower.jpg" width="150px" /></div></td></tr>
+  <tr><td>လယ်ကွင်း <br/>
+    <audio controls>
+      <source src="audio/horse.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+    </audio>
+  </td><td>ပုဇဉ်း
+    <br/>
+      <audio controls>
+        <source src="audio/tazin.mp3" type="audio/mpeg">
+      Your browser does not support the audio element.
+      </audio>
+    </td><td>သဇင်
+      <br/>
+        <audio controls>
+          <source src="audio/elephant.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+        </audio>
+    </td></tr>
 	</table>
 
 	<div class="donationReceivePPL">
@@ -353,5 +485,81 @@
  
 		</div>
 	</div>
+	
+		  <script type="text/javascript">
+var dragItems = Array.from(document.querySelectorAll('.dragElement'));
+var dropZoneSet = Array.from(document.querySelectorAll('.dropZone'));
+
+var offsetX=0;
+var offsetY=0;
+
+dropZoneSet.forEach(dropzone => {
+  dropzone.addEventListener('dragover', (e) => {
+    e.preventDefault();
+	e.dataTransfer.dropEffect = "move"; // Optional: specify the drag effect
+});
+});
+
+dropZoneSet.forEach(dropzone => {
+  dropzone.addEventListener('drop', (e) => {
+    e.preventDefault();
+	//e.dataTransfer.dropEffect = "move"; // Optional: specify the drag effect
+	const data = e.dataTransfer.getData("text"); // Retrieve the stored ID
+	console.log("get id back::"+data);
+	const draggedElement = document.getElementById(data);
+ // e.target.appendChild(draggedElement); // Move the element
+  
+    //dropzone.appendChild(dragItem);
+	
+
+	dropzone.appendChild(draggedElement);
+	
+		const imgElement = document.createElement('img');
+		
+		if(dropzone.id=="dzHorse" && data=="a1")
+			imgElement.src = 'img/correct.png';
+		else 
+			imgElement.src = 'img/wrong.png';
+			
+	imgElement.style= 'position: absolute;top:10px;right:50px;';
+    imgElement.width = 80; // Optional: set width
+	dropzone.appendChild(imgElement);
+});
+});
+
+dropZoneSet.forEach((dropZone) => {
+  dropZone.addEventListener('dragover', () => {
+    dropZone.classList.add('hoverOver');
+  });
+  
+   dropZone.addEventListener('dragleave', () => {
+    dropZone.classList.remove('hoverOver');
+  });
+ 
+});
+
+dragItems.forEach((dragItem) => {
+dragItem.addEventListener('drag', (ev) => {
+  dragItem.classList.add('beingDragged');
+} );
+
+dragItem.addEventListener('dragstart', (ev) => {
+  ev.dataTransfer.setData("text", ev.target.id); // Store the element's ID
+  	console.log("text to id::"+ev.target.id);
+} );
+});
+
+function QuizOnClick(){
+	console.log("btn on click");
+	document.getElementById("tblQuiz").style = "visibility:visible";
+	dropZoneSet.forEach(dropzone => {
+		dropzone.innerHTML = "&nbsp;";
+		dropzone.style= "background: rgba( 0, 0, 0, 0.1 );"
+
+	});
+}
+</script>
+
+
 </body>
 </html>
