@@ -386,7 +386,7 @@ border-radius: 5px;
 </td></tr>
 <tr>
 <td colspan=3>
-<table id="tblQuiz" style="visibility:collapse;">
+<table id="tblQuiz" style="display:none;">
 <tr><td>
 		<img id="a1" src="./img/horse.jpeg" width="150px" class="dragElement" draggable="true" />
 <br/>
@@ -400,11 +400,11 @@ border-radius: 5px;
 <br/>
 		<img id="b3" src="./img/rice.jpg" width="150px" class="dragElement" draggable="true" />
 </td><td>
-		<img id="b1" src="./img/rice_fields.jpg" width="150px"  class="dragElement" draggable="true" />    
+		<img id="c1" src="./img/rice_fields.jpg" width="150px"  class="dragElement" draggable="true" />    
 <br/>
-		<img id="b2" src="./img/dragonfly.jpg" width="150px"  class="dragElement" draggable="true" />
+		<img id="c2" src="./img/dragonfly.jpg" width="150px"  class="dragElement" draggable="true" />
 <br/>
-		<img id="b3" src="./img/thazin_flower.jpg" width="150px" class="dragElement" draggable="true" />
+		<img id="c3" src="./img/thazin_flower.jpg" width="150px" class="dragElement" draggable="true" />
 </td></tr></table>
 <br/>
 <input type="button" class="button" id="letsQuiz" value="Let's Quiz" onClick="QuizOnClick()">
@@ -412,8 +412,8 @@ border-radius: 5px;
 </td></tr>
 <tr>		
 <td><div class="dropZone" id="dzHorse"><img src="./img/horse.jpeg" width="150px" /></div></td>
-<td><div class="dropZone"><img src="./img/tazin.jpeg" width="150px" /></div></td>
-<td><div class="dropZone"><img src="./img/elephant.jpg" width="150px" /></div></td></tr>
+<td><div class="dropZone" id="dzTazin"><img src="./img/tazin.jpeg" width="150px" /></div></td>
+<td><div class="dropZone" id="dzElephant"><img src="./img/elephant.jpg" width="150px" /></div></td></tr>
   <tr><td>မြင်း <br/>
     <audio controls>
       <source src="audio/horse.mp3" type="audio/mpeg">
@@ -434,9 +434,9 @@ border-radius: 5px;
     </td></tr>
 	
 	<tr>		
-<td><div class="dropZone"><img src="./img/rose.jpg" width="150px" /></div></td>
-<td><div class="dropZone"><img src="./img/yaeOsin.jpg" width="150px" /></div></td>
-<td><div class="dropZone"><img src="./img/rice.jpg" width="150px" /></div></td></tr>
+<td><div class="dropZone" id="dzRose"><img src="./img/rose.jpg" width="150px" /></div></td>
+<td><div class="dropZone" id="dzYaeOsin"><img src="./img/yaeOsin.jpg" width="150px" /></div></td>
+<td><div class="dropZone" id="dzRice"><img src="./img/rice.jpg" width="150px" /></div></td></tr>
   <tr><td>နှင်းဆီပွင့် <br/>
     <audio controls>
       <source src="audio/horse.mp3" type="audio/mpeg">
@@ -458,8 +458,8 @@ border-radius: 5px;
 	
 	<tr>		
 <td><div class="dropZone" id="dzRiceFields" ><img src="./img/rice_fields.jpg" width="150px" /></div></td>
-<td><div class="dropZone"><img src="./img/dragonfly.jpg" width="150px" /></div></td>
-<td><div class="dropZone"><img src="./img/thazin_flower.jpg" width="150px" /></div></td></tr>
+<td><div class="dropZone" id="dzDragonFly"><img src="./img/dragonfly.jpg" width="150px" /></div></td>
+<td><div class="dropZone" id="dzThazinFlower"><img src="./img/thazin_flower.jpg" width="150px" /></div></td></tr>
   <tr><td>လယ်ကွင်း <br/>
     <audio controls>
       <source src="audio/horse.mp3" type="audio/mpeg">
@@ -516,13 +516,28 @@ dropZoneSet.forEach(dropzone => {
 	
 		const imgElement = document.createElement('img');
 		
-		if(dropzone.id=="dzHorse" && data=="a1")
+		if ( (dropzone.id=="dzHorse" && data=="a1") ||
+		(dropzone.id=="dzTazin" && data=="a2") ||
+		(dropzone.id=="dzElephant" && data=="a3") ||
+		
+		(dropzone.id=="dzRose" && data=="b1") ||
+		(dropzone.id=="dzYaeOsin" && data=="b2") ||
+		(dropzone.id=="dzRice" && data=="b3") ||
+		
+		(dropzone.id=="dzRiceFields" && data=="c1") ||
+		(dropzone.id=="dzDragonFly" && data=="c2") ||
+		(dropzone.id=="dzThazinFlower" && data=="c3") 
+		)
+		{
 			imgElement.src = 'img/correct.png';
-		else 
+			imgElement.width = 80; // Optional: set width
+				
+		} else { 
 			imgElement.src = 'img/wrong.png';
-			
-	imgElement.style= 'position: absolute;top:10px;right:50px;';
-    imgElement.width = 80; // Optional: set width
+			imgElement.width = 130; // Optional: set width
+			}
+	imgElement.style= 'position: absolute;top:0px;right:20px;';
+
 	dropzone.appendChild(imgElement);
 });
 });
@@ -551,7 +566,7 @@ dragItem.addEventListener('dragstart', (ev) => {
 
 function QuizOnClick(){
 	console.log("btn on click");
-	document.getElementById("tblQuiz").style = "visibility:visible";
+	document.getElementById("tblQuiz").style = "display:block;";
 	dropZoneSet.forEach(dropzone => {
 		dropzone.innerHTML = "&nbsp;";
 		dropzone.style= "background: rgba( 0, 0, 0, 0.1 );"
