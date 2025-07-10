@@ -478,6 +478,96 @@ border-radius: 5px;
         Your browser does not support the audio element.
         </audio>
     </td></tr>
+
+<tr>
+<td colspan=3>
+<h2>Lecture</h2>
+	<iframe src="https://drive.google.com/file/d/1_xoTrFZfaFhg1ue2IBCwGqyd9hmAMXiY/preview" width="640" height="480" allow="autoplay"></iframe>
+</td>
+</tr>
+<tr>
+<td colspan=3>
+<h2>Practice</h2>
+</td></tr>
+<tr>
+<td colspan=3 style="align:center;text-align:center;">
+	<table align="center">
+		<tr><td><img src="img/open_windows.jpg" width="200px" /></td>
+	<td>
+	မိုးစင်စင်လင်းပြီ။<br/>
+	ပြတင်းများ ဖွင့်ထားပါ။<br/>
+	သတင်းစာ နေ့စဉ် ကြည့်ရှုပါ။<br/>
+	သတင်းထူးပါလျှင် ပြောပါ။<br/>
+	<audio controls>
+          <source src="audio/elephant.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+        </audio>
+	</td></tr>
+	
+		<tr>
+	<td>
+	တွင်းရေ ကြည်လင်၏။<br/>
+	ရေငင်နေသလား။<br/>
+	ရေအိုးကို ပင့်ပေးပါ။<br/>
+	အချင်းချင်း ကူညီရမည်။<br/>
+	<audio controls>
+          <source src="audio/elephant.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+        </audio>
+	</td>
+	<td><img src="img/open_windows.jpg" width="200px" /></td>
+	</tr>
+	
+		<tr><td><img src="img/open_windows.jpg" width="200px" /></td>
+	<td>
+	ပညာရှိနှင့် ယှဉ်တွဲပါ။<br/>
+	စဉ်းစားတွေးခေါ်ဆင်ခြင်ပါ။<br/>
+	ယဉ်ယဉ်ကျေးကျေး ပြောဆိုပါ။<br/>
+	စည်းမျဉ်းစည်းကမ်းကို လေးစားပါ။<br/>
+	<audio controls>
+          <source src="audio/elephant.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+        </audio>
+	</td></tr>
+	
+		<tr>
+	<td>
+	လယ်ကွင်းပြင်မှာ ရေဖွေးဖွေး။<br/>
+	ပျိုမေလေးများ လယ်ထဲဆင်းကြမည်။<br/>
+	ပျော်ပျော်ရွှင်ရွှင် သီချင်းဆိုကြ၏။<br/>
+	ပျိုးပင်များ သယ်လာကြသည်။<br/>
+	<audio controls>
+          <source src="audio/elephant.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+        </audio>
+	</td>
+	<td><img src="img/open_windows.jpg" width="200px" /></td>
+	</tr>
+	
+	</table>
+</td></tr>
+
+
+
+<tr>
+<td colspan=3>
+<h2>Lecture</h2>
+<iframe src="https://drive.google.com/file/d/1hHr1ukPPfYBGxu8J1lUIBtyQryS3X9Om/preview" width="640" height="480" allow="autoplay"></iframe>
+</td>
+</tr>
+<tr>
+<td colspan=3>
+<h2>Practice</h2>
+</td></tr>
+<tr><td colspan=3 style="text-align:left">
+<img id="ans_1_0" style="display:none;" src="img/wrong.png" width="30px"/><img id="ans_1_1" style="display:none;" width="33px" src="img/correct.png" />
+(က) အစာများကို ___<span id="ans_1" style="font-weight:bold;"></span>___ မနားပါစေနဲ့။<br/>
+<input type="button" class="button" value="ယင်" onClick="CheckOnClick(1,1,this)">
+&nbsp;&nbsp;&nbsp;
+<input type="button" class="button" value="ယဉ်" onClick="CheckOnClick(1,0,this)">
+</td></tr>
+
+
 	</table>
 
 	<div class="donationReceivePPL">
@@ -531,10 +621,10 @@ dropZoneSet.forEach(dropzone => {
 		{
 			imgElement.src = 'img/correct.png';
 			imgElement.width = 80; // Optional: set width
-				
 		} else { 
 			imgElement.src = 'img/wrong.png';
 			imgElement.width = 130; // Optional: set width
+			imgElement.style= 'margin-left:-35px;';
 			}
 	//imgElement.style= 'position:absolute;top:0px;right:20px;';
 
@@ -572,6 +662,14 @@ function QuizOnClick(){
 		dropzone.style= "background: rgba( 0, 0, 0, 0.1 );"
 
 	});
+}
+
+function CheckOnClick(ansId, tf, sObj){
+	var blkObj = document.getElementById("ans_"+ansId);
+	blkObj.innerHTML = sObj.value;
+	
+	var ansMark = document.getElementById("ans_"+ansId+"_"+tf);
+	ansMark.style="display:inline;";
 }
 </script>
 
