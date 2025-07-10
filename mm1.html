@@ -387,24 +387,24 @@ border-radius: 5px;
 <tr>
 <td colspan=3>
 <table id="tblQuiz" style="display:none;">
-<tr><td>
-		<img id="a1" src="./img/horse.jpeg" width="150px" class="dragElement" draggable="true" />
-<br/>
-		<img  id="a2" src="./img/tazin.jpeg" width="150px" class="dragElement" draggable="true" />
-<br/>
-		<img  id="a3" src="./img/elephant.jpg" width="150px" class="dragElement" draggable="true" />
-</td><td>	
-		<img id="b1" src="./img/rose.jpg" width="150px"  class="dragElement" draggable="true" />    
-<br/>
-		<img id="b2" src="./img/yaeOsin.jpg" width="150px"  class="dragElement" draggable="true" />
-<br/>
-		<img id="b3" src="./img/rice.jpg" width="150px" class="dragElement" draggable="true" />
-</td><td>
-		<img id="c1" src="./img/rice_fields.jpg" width="150px"  class="dragElement" draggable="true" />    
-<br/>
-		<img id="c2" src="./img/dragonfly.jpg" width="150px"  class="dragElement" draggable="true" />
-<br/>
-		<img id="c3" src="./img/thazin_flower.jpg" width="150px" class="dragElement" draggable="true" />
+<tr>
+<td> <img style="display:inline;" id="a1" src="./img/horse.jpeg" width="150px" class="dragElement" draggable="true" />
+
+		<img style="display:inline;" id="a2" src="./img/tazin.jpeg" width="150px" class="dragElement" draggable="true" />
+
+		<img  style="display:inline;" id="a3" src="./img/elephant.jpg" width="150px" class="dragElement" draggable="true" />
+
+		<img  style="display:inline;" id="b1" src="./img/rose.jpg" width="150px"  class="dragElement" draggable="true" />    
+
+		<img style="display:inline;" id="b2" src="./img/yaeOsin.jpg" width="150px"  class="dragElement" draggable="true" />
+
+		<img  style="display:inline;" id="b3" src="./img/rice.jpg" width="150px" class="dragElement" draggable="true" />
+
+		<img  style="display:inline;" id="c1" src="./img/rice_fields.jpg" width="150px"  class="dragElement" draggable="true" />    
+
+		<img  style="display:inline;" id="c2" src="./img/dragonfly.jpg" width="150px"  class="dragElement" draggable="true" />
+
+		<img  style="display:inline;" id="c3" src="./img/thazin_flower.jpg" width="150px" class="dragElement" draggable="true" />
 </td></tr></table>
 <br/>
 <input type="button" class="button" id="letsQuiz" value="Let's Quiz" onClick="QuizOnClick()">
@@ -562,12 +562,46 @@ border-radius: 5px;
 <tr><td colspan=3 style="text-align:left">
 <img id="ans_1_0" style="display:none;" src="img/wrong.png" width="30px"/><img id="ans_1_1" style="display:none;" width="33px" src="img/correct.png" />
 (က) အစာများကို ___<span id="ans_1" style="font-weight:bold;"></span>___ မနားပါစေနဲ့။<br/>
-<input type="button" class="button" value="ယင်" onClick="CheckOnClick(1,1,this)">
+<input type="button" id="btnAns_1_A" class="button" value="ယင်" onClick="CheckOnClick(1,1,this)">
 &nbsp;&nbsp;&nbsp;
-<input type="button" class="button" value="ယဉ်" onClick="CheckOnClick(1,0,this)">
+<input type="button" id="btnAns_1_B" class="button" value="ယဉ်" onClick="CheckOnClick(1,0,this)">
 </td></tr>
 
+<tr><td colspan=3 style="text-align:left">
+<img id="ans_2_0" style="display:none;" src="img/wrong.png" width="30px"/>
+<img id="ans_2_1" style="display:none;" width="33px" src="img/correct.png" />
+(ခ) စကားကို ___<span id="ans_2" style="font-weight:bold;"></span>___ သာသာပြောပါ။<br/>
+<input type="button" id="btnAns_2_A" class="button" value="ညင်ညင်" onClick="CheckOnClick(2,1,this)">
+&nbsp;&nbsp;&nbsp;
+<input type="button" id="btnAns_2_B" class="button" value="ဉာဉ်ဉာဉ်" onClick="CheckOnClick(2,0,this)">
+</td></tr>
 
+<tr><td colspan=3 style="text-align:left">
+<img id="ans_3_0" style="display:none;" src="img/wrong.png" width="30px"/>
+<img id="ans_3_1" style="display:none;" width="33px" src="img/correct.png" />
+(ဂ) ___<span id="ans_3" style="font-weight:bold;"></span>___ အိုးထဲမှာ ရေအပြည့်ရှိတယ်။<br/>
+<input type="button" id="btnAns_3_A" class="button" value="စဉ့်" onClick="CheckOnClick(3,1,this)">
+&nbsp;&nbsp;&nbsp;
+<input type="button" id="btnAns_3_B" class="button" value="စင့်" onClick="CheckOnClick(3,0,this)">
+</td></tr>
+
+<tr><td colspan=3 style="text-align:left">
+<img id="ans_4_0" style="display:none;" src="img/wrong.png" width="30px"/>
+<img id="ans_4_1" style="display:none;" width="33px" src="img/correct.png" />
+(ဃ) မေးခွန်းကို ___<span id="ans_4" style="font-weight:bold;"></span>___ ၍ ဖြေပါ။<br/>
+<input type="button" id="btnAns_4_A" class="button" value="စဉ်းစား" onClick="CheckOnClick(4,1,this)">
+&nbsp;&nbsp;&nbsp;
+<input type="button" id="btnAns_4_B" class="button" value="စင်းစား" onClick="CheckOnClick(4,0,this)">
+</td></tr>
+
+<tr><td colspan=3 style="text-align:left">
+<img id="ans_5_0" style="display:none;" src="img/wrong.png" width="30px"/>
+<img id="ans_5_1" style="display:none;" width="33px" src="img/correct.png" />
+(င) ဒီအသီးက ___<span id="ans_5" style="font-weight:bold;"></span>___ လိုက်တာ။<br/>
+<input type="button" id="btnAns_5_A" class="button" value="ချဉ်" onClick="CheckOnClick(5,1,this)">
+&nbsp;&nbsp;&nbsp;
+<input type="button" id="btnAns_5_B" class="button" value="ချင်" onClick="CheckOnClick(5,0,this)">
+</td></tr>
 	</table>
 
 	<div class="donationReceivePPL">
@@ -670,6 +704,12 @@ function CheckOnClick(ansId, tf, sObj){
 	
 	var ansMark = document.getElementById("ans_"+ansId+"_"+tf);
 	ansMark.style="display:inline;";
+	
+	var ansBtnA = document.getElementById("btnAns_"+ansId+"_A");
+	ansBtnA.style="display:none;";
+	
+	var ansBtnB = document.getElementById("btnAns_"+ansId+"_B");
+	ansBtnB.style="display:none;";
 }
 </script>
 
