@@ -275,6 +275,7 @@
 
         function checkAnswer(event) {
             clearInterval(questionTimer);
+            $(event.target).blur(); // Remove focus to prevent sticky hover on touch devices
             const selectedAnswer = parseInt($(event.target).text());
             const timeTaken = ((new Date() - questionStartTime) / 1000).toFixed(2);
 
