@@ -30,6 +30,7 @@
             backdrop-filter: blur(5px);
             border: 1px solid rgba(255, 255, 255, 0.2);
         }
+        
         #answer-buttons .btn {
             font-size: 1.5rem;
             padding: 15px;
@@ -37,27 +38,28 @@
             border-radius: 12px;
             transition: all 0.2s ease-in-out;
         }
+
         .btn-answer {
             background-color: white;
             color: #2980b9;
-            border: 2px solid #a9cce3;
+            border: 2px solid #a9cce3;    
         }
-        /* hover , .btn-answer:focus
+
+        .btn-answer:active, .btn-answer:hover, .btn-answer:focus {
+            background-color: #2980b9;
+            color: white;
+        }
+        /* 
+        
+        hover , .btn-answer:focus
         .btn-answer:active, .btn-answer:hover, .btn-answer:focus {
             background-color: #3498db;
             color: white;
             border-color: #3498db;
             transform: translateY(-5px);
             box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+                            border-color: #3498db;
         } */
-
-        @media (hover: hover) {
-            .btn-answer:hover, .btn-answer:active, .btn-answer:focus {
-                background-color: #3498db;
-                color: white;
-                border-color: #3498db;
-            }
-        }
 
         #question-text {
             font-size: 3.5rem;
@@ -70,14 +72,14 @@
             font-weight: 700;
             color: #34495e;
         }
-        .table .correct {
+        .table .correct td {
             background-color: #e8f8f5 !important; /* Softer green */
-            color: #1abc9c;
+            color: #1abc9c !important;
             font-weight: bold;
         }
-        .table .incorrect {
+        .table .incorrect td {
             background-color: #fdedec !important; /* Softer red */
-            color: #e74c3c;
+            color: #e74c3c !important;
             font-weight: bold;
         }
         h1, h2, h3, h4 {
@@ -95,6 +97,7 @@
             border-radius: 50px;
             transition: all 0.3s ease;
         }
+        
         .btn-primary:hover {
             background-color: #2980b9;
             border-color: #2980b9;
@@ -167,7 +170,7 @@
     <script>
     $(document).ready(function() {
 
-        const TOTAL_QUESTIONS = 30;
+        const TOTAL_QUESTIONS = 5;
         let questions = [];
         let currentQuestionIndex = 0;
         let score = 0;
